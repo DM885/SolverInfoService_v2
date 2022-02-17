@@ -1,4 +1,4 @@
-FROM 16-alpine3.14 
+FROM node:16-alpine3.14 
 # minizinc/minizinc:latest
 # node:16.3-alpine3.12
 #16-alpine3.14
