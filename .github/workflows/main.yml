@@ -164,6 +164,9 @@ jobs:
           cluster_name: ${{ env.GKE_CLUSTER }}
           location: ${{ env.GKE_ZONE }}
           credentials: ${{ secrets.GKE_SA_KEY }}
+      
+      - run: |-
+         gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
 
       # Deploy the Docker image to the GKE BUILD cluster
       - name: Deploy to GKE Cluster
