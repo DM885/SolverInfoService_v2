@@ -1,5 +1,7 @@
-FROM minizinc/minizinc:latest
+FROM 16-alpine3.14 
+# minizinc/minizinc:latest
 # node:16.3-alpine3.12
+#16-alpine3.14
 
 # Create app directory
 WORKDIR /usr/src/app
