@@ -1,4 +1,5 @@
 FROM node:16.3-alpine3.12 
+# This is a new docker image to be added. !!!!!!!!!
 # node:17.5-alpine3.14 
 # minizinc/minizinc:latest
 # node:16.3-alpine3.12 # used for the group
