@@ -23,7 +23,7 @@ jobs:
     steps:
       # Check for cancellation
       - name: Check for cancellation
-        if: env.CICD_TOGGLE == 'false'
+        if: env.CICD_TOGGLE == 'true'
         uses: andymckay/cancel-action@0.2
         continue-on-error: true
       # Check out code
