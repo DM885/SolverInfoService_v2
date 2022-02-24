@@ -1,4 +1,4 @@
-FROM node:16.3-alpine3.12 
+FROM node:17.5-alpine3.14 
 # node:17.5-alpine3.14 
 # minizinc/minizinc:latest
 # node:16.3-alpine3.12 # used for the group
