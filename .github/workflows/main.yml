@@ -6,8 +6,7 @@ name: DM885 CI/CD
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+ 
 
 env:
   CICD_TOGGLE: true                              # Change this to true when you are ready to use the pipeline
