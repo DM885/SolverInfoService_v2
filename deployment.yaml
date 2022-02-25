@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: solver-info                # CHANGE THIS TO YOUR SERVICE NAME
+  labels:
+    app: solver-info               # CHANGE THIS TO YOUR SERVICE NAME
+spec:
+  selector:
+    matchLabels:
+      app: solver-info             # CHANGE THIS TO YOUR SERVICE NAME
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: solver-info           # CHANGE THIS TO YOUR SERVICE NAME
+    spec:
+      containers:
+        - name: solver-info          # CHANGE THIS TO YOUR SERVICE NAME
+          image: dm885/solver-info   # CHANGE THIS TO YOUR SERVICE NAME
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          env:
+            - name: mysqlHost
+              value: "mysql.default.svc.cluster.local"
+            - name: mysqlUser
+              value: "root"
+            - name: mysqlPass
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secrets
+                  key: mysql-root-password
+            - name: mysqlDb
+              value: "solverinfo"
+            - name: rabbitHost
+              value: "rabbitmq-0.rabbitmq.rabbits.svc.cluster.local"
+            - name: rabbitPort
+              value: "5672"
+            - name: rabbitUser
+              valueFrom:
+                secretKeyRef:
+                  name: rabbitmq-secrets
+                  key: RABBIT_USERNAME
+            - name: rabbitPass
+              valueFrom:
+                secretKeyRef:
+                  name: rabbitmq-secrets
+                  key: RABBIT_PASSWORD
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: solver-info              # CHANGE THIS TO YOUR SERVICE NAME
+  labels:
+    app: solver-info             # CHANGE THIS TO YOUR SERVICE NAME
+spec:
+  type: ClusterIP
+  selector:
+    app: solver-info             # CHANGE THIS TO YOUR SERVICE NAME
+  ports:
+    - protocol: TCP
+      name: http
+      port: 80
+      targetPort: 3000

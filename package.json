@@ -1,0 +1,35 @@
+{
+  "name": "solver-info-service",
+  "version": "0.0.1",
+  "description": "The solver info microservice",
+  "main": "./src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules TESTING=1 npx jest",
+    "start": "cross-env RAPID=1 node src/index.js",
+    "debug": "cross-env RAPID=1 nodemon src/index.js",
+    "debugDocker": "cross-env RAPID=1 mysqlHost=localhost mysqlPass=password mysqlDb=dm885 mysqlUser=root nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DM885/SolverInfoService.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DM885/SolverInfoService/issues"
+  },
+  "homepage": "https://github.com/DM885/SolverInfoService#readme",
+  "dependencies": {
+    "@ovcina/rapidriver": "^2.0.8",
+    "cross-env": "^7.0.3",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "@jest/globals": "^27.3.1",
+    "cypress": "~8.5.0",
+    "jest": "^27.3.1",
+    "nodemon": "^2.0.14"
+  }
+}
